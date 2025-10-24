@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiết Mục Của 11A1</title>
+    <!-- Tải Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Sử dụng font Inter */
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-900 text-white flex items-center justify-center min-h-screen relative overflow-hidden"
+  >
+    <!-- Lớp phủ và Modal (Popup) -->
+    <!-- Ban đầu được hiển thị bằng 'flex', sẽ bị ẩn bằng JavaScript -->
+    <div
+      id="welcome-modal"
+      class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+    >
+      <div
+        class="bg-white text-gray-900 rounded-lg shadow-xl p-6 md:p-8 w-full max-w-md mx-auto"
+      >
+        <!-- Nút X để đóng -->
+        <div class="flex justify-end">
+          <button
+            id="close-modal-x"
+            class="text-gray-400 hover:text-gray-600 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+
+        <!-- Nội dung Popup -->
+        <div class="text-center mt-4">
+          <h2 class="text-2xl font-bold mb-4">Chào mừng!</h2>
+          <p class="text-lg">
+            Chào mừng bạn đến với tiết mục trình diễn tuyệt vời của 11A1 chúng
+            tôi
+          </p>
+        </div>
+
+        <!-- Nút OK -->
+        <div class="mt-8 flex justify-center">
+          <button
+            id="close-modal-ok"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-300"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vùng chứa Video -->
+    <!-- Ban đầu bị ẩn, sẽ được hiển thị bằng JavaScript -->
+    <div id="video-container" class="hidden w-full max-w-4xl p-4">
+      <h1 class="text-3xl font-bold text-center mb-6">Tiết mục của 11A1</h1>
+      <div class="aspect-video bg-black rounded-lg shadow-2xl overflow-hidden">
+        <!-- 
+              QUAN TRỌNG:
+              Thay đổi 'video/man_trinh_dien.mp4' bên dưới thành đường dẫn chính xác
+              đến file video của bạn.
+              
+              Ví dụ:
+              - Nếu video tên là '11A1.mp4' và nằm cùng thư mục với file HTML này:
+                src="11A1.mp4"
+              - Nếu nó nằm trong thư mục con tên là 'media':
+                src="media/11A1.mp4"
+            -->
+        <video id="class-video" class="w-full h-full" controls>
+          <source src="video/video.mp4" type="video/mp4" />
+          <!-- Thông báo dự phòng nếu trình duyệt không hỗ trợ video hoặc không tìm thấy file -->
+          Trình duyệt của bạn không hỗ trợ thẻ video, hoặc không tìm thấy file
+          video. Hãy chắc chắn rằng bạn đã đặt đúng đường dẫn trong 'src'.
+        </video>
+      </div>
+    </div>
+
+    <script>
+      // Lấy các phần tử DOM
+      const modal = document.getElementById("welcome-modal");
+      const videoContainer = document.getElementById("video-container");
+      const videoPlayer = document.getElementById("class-video");
+      const closeModalX = document.getElementById("close-modal-x");
+      const closeModalOk = document.getElementById("close-modal-ok");
+
+      // Hàm để đóng modal và hiển thị video
+      function closeModal() {
+        modal.classList.add("hidden"); // Ẩn modal
+        videoContainer.classList.remove("hidden"); // Hiển thị video
+        // Tùy chọn: Tự động phát video (một số trình duyệt có thể chặn điều này)
+        // videoPlayer.play().catch(error => {
+        //     console.log("Không thể tự động phát video:", error);
+        // });
+      }
+
+      // Gán sự kiện click cho cả hai nút đóng
+      closeModalX.addEventListener("click", closeModal);
+      closeModalOk.addEventListener("click", closeModal);
+
+      // Hiển thị modal ngay khi trang được tải
+      // (Trong trường hợp này, nó đã được hiển thị theo mặc định bằng 'flex')
+      // window.addEventListener('load', () => {
+      //     modal.classList.remove('hidden');
+      // });
+    </script>
+  </body>
+</html>

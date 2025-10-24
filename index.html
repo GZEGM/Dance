@@ -6,15 +6,34 @@
     <title>Tiết Mục Của 11A1</title>
     <!-- Tải Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tải Google Font 'Nunito' (font chữ dễ thương) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-      /* Sử dụng font Inter */
+      /* Sử dụng font Inter làm cơ sở */
       body {
         font-family: "Inter", sans-serif;
       }
+
+      /* Định nghĩa class cho font chữ dễ thương */
+      .font-cute {
+        font-family: "Nunito", sans-serif;
+      }
     </style>
   </head>
+  <!-- 
+    THAY ĐỔI:
+    - Đổi gradient nền từ 'from-blue-100 to-indigo-100'
+    - thành 'from-pink-100 to-orange-100' (tông hoàng hôn pastel)
+  -->
   <body
-    class="bg-gray-900 text-white flex items-center justify-center min-h-screen relative overflow-hidden"
+    class="bg-gradient-to-br from-pink-100 to-orange-100 text-gray-800 flex items-center justify-center min-h-screen relative overflow-hidden"
   >
     <!-- Lớp phủ và Modal (Popup) -->
     <!-- Ban đầu được hiển thị bằng 'flex', sẽ bị ẩn bằng JavaScript -->
@@ -22,14 +41,24 @@
       id="welcome-modal"
       class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
     >
+      <!-- 
+        THAY ĐỔI:
+        - Đổi nền gradient thành 'bg-white' cho dịu mắt
+        - Đổi màu chữ chính 'text-gray-800'
+      -->
       <div
-        class="bg-white text-gray-900 rounded-lg shadow-xl p-6 md:p-8 w-full max-w-md mx-auto"
+        class="font-cute bg-white text-gray-800 rounded-2xl shadow-2xl p-6 md:p-8 w-full max-w-md mx-auto"
       >
         <!-- Nút X để đóng -->
         <div class="flex justify-end">
+          <!-- 
+            THAY ĐỔI:
+            - Đổi màu 'text-purple-600' thành màu 'text-indigo-400'
+            - Đổi màu hover 'hover:text-purple-800' thành 'hover:text-indigo-600'
+          -->
           <button
             id="close-modal-x"
-            class="text-gray-400 hover:text-gray-600 text-2xl"
+            class="text-indigo-400 hover:text-indigo-600 text-3xl font-bold"
           >
             &times;
           </button>
@@ -37,8 +66,18 @@
 
         <!-- Nội dung Popup -->
         <div class="text-center mt-4">
-          <h2 class="text-2xl font-bold mb-4">Chào mừng!</h2>
-          <p class="text-lg">
+          <!-- 
+            THAY ĐỔI:
+            - Đổi màu chữ 'text-purple-800' thành 'text-indigo-600'
+          -->
+          <h2 class="text-4xl font-extrabold mb-4 text-indigo-600">
+            Chào mừng!
+          </h2>
+          <!-- 
+            THAY ĐỔI:
+            - Đổi màu chữ 'text-purple-700' thành 'text-gray-600'
+          -->
+          <p class="text-lg text-gray-600">
             Chào mừng bạn đến với tiết mục trình diễn tuyệt vời của 11A1 chúng
             tôi
           </p>
@@ -46,9 +85,14 @@
 
         <!-- Nút OK -->
         <div class="mt-8 flex justify-center">
+          <!-- 
+            THAY ĐỔI:
+            - Đổi màu nền 'bg-pink-500' thành 'bg-indigo-500'
+            - Đổi màu hover 'hover:bg-pink-600' thành 'hover:bg-indigo-600'
+          -->
           <button
             id="close-modal-ok"
-            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-300"
+            class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105"
           >
             OK
           </button>
@@ -59,22 +103,15 @@
     <!-- Vùng chứa Video -->
     <!-- Ban đầu bị ẩn, sẽ được hiển thị bằng JavaScript -->
     <div id="video-container" class="hidden w-full max-w-4xl p-4">
-      <h1 class="text-3xl font-bold text-center mb-6">Tiết mục của 11A1</h1>
       <div class="aspect-video bg-black rounded-lg shadow-2xl overflow-hidden">
         <!-- 
               QUAN TRỌNG:
               Thay đổi 'video/man_trinh_dien.mp4' bên dưới thành đường dẫn chính xác
               đến file video của bạn.
-              
-              Ví dụ:
-              - Nếu video tên là '11A1.mp4' và nằm cùng thư mục với file HTML này:
-                src="11A1.mp4"
-              - Nếu nó nằm trong thư mục con tên là 'media':
-                src="media/11A1.mp4"
             -->
         <video id="class-video" class="w-full h-full" controls>
           <source src="video/video.mp4" type="video/mp4" />
-          <!-- Thông báo dự phòng nếu trình duyệt không hỗ trợ video hoặc không tìm thấy file -->
+          <!-- Thông báo dự phòng nếu trình duyệt không hỗD trợ video hoặc không tìm thấy file -->
           Trình duyệt của bạn không hỗ trợ thẻ video, hoặc không tìm thấy file
           video. Hãy chắc chắn rằng bạn đã đặt đúng đường dẫn trong 'src'.
         </video>
